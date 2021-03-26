@@ -1,9 +1,41 @@
 .Home .lander {
-  padding: 80px 0;
+  padding: 50px 50px;
   text-align: center;
+  width: 100%;
+  height: auto;
+}
+
+.banner {
+  background-image: url("../images/paper.jpeg");
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Home .lander h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
+}
+
+.welcomeMessage {
+  background-color: rgba(220, 220, 220);
+  padding: 1rem;
+  opacity: 0.9;
+  box-shadow: 3px 3px 5px black;
+  border-radius: 10px;
+}
+
+.welcomeMessage h3 {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+a {
+  margin: 1rem;
 }

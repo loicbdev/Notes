@@ -1,39 +1,39 @@
-import React, { useState, useEffect } from "react";
-import { API } from "aws-amplify";
-import { Link } from "react-router-dom";
-import { BsPencilSquare } from "react-icons/bs";
-import ListGroup from "react-bootstrap/ListGroup";
-import { LinkContainer } from "react-router-bootstrap";
-import { useAppContext } from "../libs/contextLib";
-import { onError } from "../libs/errorLib";
-import "./Home.css";
+import React, {useState, useEffect} from "react"
+import {API} from "aws-amplify"
+import {Link} from "react-router-dom"
+import {BsPencilSquare} from "react-icons/bs"
+import ListGroup from "react-bootstrap/ListGroup"
+import {LinkContainer} from "react-router-bootstrap"
+import {useAppContext} from "../libs/contextLib"
+import {onError} from "../libs/errorLib"
+import "./Home.css"
 
 export default function Home() {
-  const [notes, setNotes] = useState([]);
-  const { isAuthenticated } = useAppContext();
-  const [isLoading, setIsLoading] = useState(true);
+  const [notes, setNotes] = useState([])
+  const {isAuthenticated} = useAppContext()
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function onLoad() {
       if (!isAuthenticated) {
-        return;
+        return
       }
 
       try {
-        const notes = await loadNotes();
-        setNotes(notes);
+        const notes = await loadNotes()
+        setNotes(notes)
       } catch (e) {
-        onError(e);
+        onError(e)
       }
 
-      setIsLoading(false);
+      setIsLoading(false)
     }
 
-    onLoad();
-  }, [isAuthenticated]);
+    onLoad()
+  }, [isAuthenticated])
 
   function loadNotes() {
-    return API.get("notes", "/notes");
+    return API.get("notes", "/notes")
   }
 
   function renderNotesList(notes) {
@@ -42,10 +42,12 @@ export default function Home() {
         <LinkContainer to="/notes/new">
           <ListGroup.Item action className="py-3 text-nowrap text-truncate">
             <BsPencilSquare size={17} />
-            <span className="ml-2 font-weight-bold">Créer une nouvelle note</span>
+            <span className="ml-2 font-weight-bold">
+              Créer une nouvelle note
+            </span>
           </ListGroup.Item>
         </LinkContainer>
-        {notes.map(({ noteId, content, createdAt }) => (
+        {notes.map(({noteId, content, createdAt}) => (
           <LinkContainer key={noteId} to={`/notes/${noteId}`}>
             <ListGroup.Item action>
               <span className="font-weight-bold">
@@ -59,22 +61,30 @@ export default function Home() {
           </LinkContainer>
         ))}
       </>
-    );
+    )
   }
 
   function renderLander() {
     return (
-      <div className="lander">
-        <div className="pt-3">
-          <Link to="/login" className="btn btn-info btn-lg mr-3">
-            Login
-          </Link>
-          <Link to="/signup" className="btn btn-success btn-lg">
-            Signup
-          </Link>
+      <div className="banner">
+        <div className="lander">
+          <div className="welcomeMessage">
+            <h3>Bienvenue!</h3>
+            <p>
+              Ici, vous pouvez conserver vos notes et leurs documents associés.
+            </p>
+          </div>
+          <div className="pt-3">
+            <Link to="/login" className="btn btn-info btn-lg mr-3">
+              Login
+            </Link>
+            <Link to="/signup" className="btn btn-success btn-lg">
+              Signup
+            </Link>
+          </div>
         </div>
       </div>
-    );
+    )
   }
 
   function renderNotes() {
@@ -83,12 +93,12 @@ export default function Home() {
         <h2 className="pb-3 mt-4 mb-3 border-bottom">Mes Notes</h2>
         <ListGroup>{!isLoading && renderNotesList(notes)}</ListGroup>
       </div>
-    );
+    )
   }
-  
+
   return (
     <div className="Home">
       {isAuthenticated ? renderNotes() : renderLander()}
     </div>
-  );
+  )
 }
