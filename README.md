@@ -1,4 +1,4 @@
-### Serverless Stack React App
+### source : https://serverless-stack.com/
 
-https://serverless-stack.com/
+### deployment : https://notes-and-memos.netlify.app
 
