@@ -42,7 +42,7 @@ export default function Home() {
         <LinkContainer to="/notes/new">
           <ListGroup.Item action className="py-3 text-nowrap text-truncate">
             <BsPencilSquare size={17} />
-            <span className="ml-2 font-weight-bold">Create a new note</span>
+            <span className="ml-2 font-weight-bold">Créer une nouvelle note</span>
           </ListGroup.Item>
         </LinkContainer>
         {notes.map(({ noteId, content, createdAt }) => (
@@ -53,7 +53,7 @@ export default function Home() {
               </span>
               <br />
               <span className="text-muted">
-                Created: {new Date(createdAt).toLocaleString()}
+                Création: {new Date(createdAt).toLocaleString()}
               </span>
             </ListGroup.Item>
           </LinkContainer>
@@ -80,7 +80,7 @@ export default function Home() {
   function renderNotes() {
     return (
       <div className="notes">
-        <h2 className="pb-3 mt-4 mb-3 border-bottom">Your Notes</h2>
+        <h2 className="pb-3 mt-4 mb-3 border-bottom">Mes Notes</h2>
         <ListGroup>{!isLoading && renderNotesList(notes)}</ListGroup>
       </div>
     );

@@ -129,7 +129,7 @@ export default function Notes() {
             />
           </Form.Group>
           <Form.Group controlId="file">
-            <Form.Label>Attachment</Form.Label>
+            <Form.Label>Pièce(s) jointe(s)</Form.Label>
             {note.attachment && (
               <p>
                 <a
@@ -150,7 +150,7 @@ export default function Notes() {
             isLoading={isLoading}
             disabled={!validateForm()}
           >
-            Save
+            Enregistrer
           </LoaderButton>
           <LoaderButton
             block
@@ -159,7 +159,7 @@ export default function Notes() {
             onClick={handleDelete}
             isLoading={isDeleting}
           >
-            Delete
+            Supprimer
           </LoaderButton>
         </Form>
       )}

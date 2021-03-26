@@ -64,7 +64,7 @@ export default function NewNote() {
           />
         </Form.Group>
         <Form.Group controlId="file">
-          <Form.Label>Attachment</Form.Label>
+          <Form.Label>Pièce jointe</Form.Label>
           <Form.Control onChange={handleFileChange} type="file" />
         </Form.Group>
         <LoaderButton
@@ -75,7 +75,7 @@ export default function NewNote() {
           isLoading={isLoading}
           disabled={!validateForm()}
         >
-          Create
+          Créer
         </LoaderButton>
       </Form>
     </div>
